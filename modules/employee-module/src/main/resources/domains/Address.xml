@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+          http://axelor.com/xml/ns/domain-models/domain-models_5.0.xsd">
+          
+   <module package="com.axelor.employee.db" name="employee"/>  
+   
+   <entity name="Address" table="address">
+         <string name="city" title="CITY" />
+         <string name="state" title="STATE" column="States" required="true" />
+         <string name="completeAddress" title="COMPLETE_ADDRESS" large="true" multiline="true" namecolumn="true" />
+          <one-to-one ref="com.axelor.employee.db.Company" name="company" mappedBy="address" /> 
+   </entity>     
+          
+ </domain-models>
+ 
+          

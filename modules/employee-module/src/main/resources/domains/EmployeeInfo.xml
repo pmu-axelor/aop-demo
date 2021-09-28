@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+          http://axelor.com/xml/ns/domain-models/domain-models_5.0.xsd">
+       
+       <module package="com.axelor.employee.db" name="employee"/>
+       
+       <sequence name="employeeInfo.sequence" increment="1" initial="1" padding="4" prefix="PA" suffix="AXE"/>
+       
+       
+        <entity name="EmployeeInfo" table="employeeInfo">
+        
+         <string name="name" title="NAME" />
+         <date name="dateOfBirth" title="DATE OF BIRTH" />
+         <time name="timeOfBirth" title="TIME OF BIRTH" />
+         <datetime name="dateAndTime" title="DATE AND TIME" tz="true" />
+         <string name="sequence" title="REFERENCE" sequence="employeeInfo.sequence" readonly="true" /> 
+         <string name="password" title="PASSWORD" password="true" encrypted="true"/> 
+         <many-to-one name="image" title="IMAGE"  ref="com.axelor.meta.db.MetaFile" />
+         
+       
+       </entity>
+          
+ </domain-models>
+    
+     

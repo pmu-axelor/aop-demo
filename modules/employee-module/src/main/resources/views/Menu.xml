@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+       http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+ 
+   <menuitem title="Employees-Information" name="employee-details"/>
+ 
+   <menuitem title="All Employees" name="employee-info" parent="employee-details" action="action-employee-info"/>
+  <action-view name="action-employee-info" title="Employees" model="com.axelor.employee.db.Employee">
+       <view type="grid" name="employee-grid"/>
+        <view type="form" name="employee-form"/>
+     </action-view>
+     
+   <menuitem title="Company" name="company-name" parent="employee-details" action="action.company.name"/>  
+    <action-view name="action.company.name" title="Companys" model="com.axelor.employee.db.Company">
+       <view type="grid" name="company-grid"/>
+        <view type="form" name="company-form"/>
+    </action-view>
+    
+    <menuitem title="Adddress" name="address-details" parent="employee-details" action="action.address.details"/>
+    <action-view name="action.address.details" title="Addresses" model="com.axelor.employee.db.Address">
+         <view type="grid" name="address-grid"/>
+        <view type="form" name="address-form"/>
+    </action-view>
+    
+    <menuitem title="EmployeeInfo" name="employeeInfo-details" parent="employee-details" action="action.employeeInfo.details"/>
+      <action-view name="action.employeeInfo.details" title="EmployeeInfos" model="com.axelor.employee.db.EmployeeInfo">
+        <view type="grid" name="employeeInfo-grid"/>
+        <view type="form" name="employeeInfo-form"/>
+      </action-view>
+  </object-views>      

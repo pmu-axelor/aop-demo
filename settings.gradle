@@ -1,0 +1,3 @@
+rootProject.name='axelor-aop'
+
+include "modules:employee-module"

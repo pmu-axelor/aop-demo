@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+          http://axelor.com/xml/ns/domain-models/domain-models_5.0.xsd">
+          
+          <module package="com.axelor.employee.db" name="employee"/>
+          
+            <entity name="Company" table="companyName">
+            
+            <string name="companyType" title="COMPANY_TYPE" selection="employee.company.company.type"></string>
+            
+            <string name="companyName" title="Company_Name" namecolumn="true"></string>
+          
+           <one-to-many name="employeeList" title="EMPLOYEES" ref="com.axelor.employee.db.Employee" mappedBy="companies" orderBy="salary"/>
+           <one-to-one ref="com.axelor.employee.db.Address" name="address" /> 
+           <many-to-many name="employeeInfoSet" ref="com.axelor.employee.db.EmployeeInfo" title="EMPLOYEE_INFO" />
+          
+           <extra-code>
+            <![CDATA[
+            
+               public static final String COMPANY_TYPE_GOVERNMNET = "government";
+               public static final String COMPANY_TYPE_SEMI_GOVERNMNET = "semi-government";
+               public static final String COMPANY_TYPE_PRIVATE = "private";
+               
+            ]]>
+             </extra-code>
+          
+          </entity>
+          
+  </domain-models>
+          
