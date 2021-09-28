@@ -24,6 +24,12 @@
         <view type="form" name="address-form"/>
     </action-view>
     
+    <menuitem title="CompanyTest" name="companyTest-name" parent="employee-details" action="action.companyTest.name"/>  
+    <action-view name="action.companyTest.name" title="Companys" model="com.axelor.employee.db.Company">
+       <view type="grid" name="companyTest-grid"/>
+        <view type="form" name="company-form"/>
+    </action-view>
+    
     <menuitem title="EmployeeInfo" name="employeeInfo-details" parent="employee-details" action="action.employeeInfo.details"/>
       <action-view name="action.employeeInfo.details" title="EmployeeInfos" model="com.axelor.employee.db.EmployeeInfo">
         <view type="grid" name="employeeInfo-grid"/>

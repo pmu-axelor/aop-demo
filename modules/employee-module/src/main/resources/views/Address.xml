@@ -9,9 +9,8 @@
     <field name="state" />
     <field name="completeAddress" />
     <field name="company" />
-   
    </grid>
-   
+
    <form model="com.axelor.employee.db.Address" title="Address" name="address-form">
      <panel>
          <field name="city" />

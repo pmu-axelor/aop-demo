@@ -6,14 +6,37 @@
    
    <grid model="com.axelor.employee.db.Company" title="Companys" name="company-grid">
      <field name="companyName"/>
+     
      <field name="companyType"/>
+     <field name="address" />  
+   </grid>
+       
+   <grid model="com.axelor.employee.db.Company" title="CompanyTest" name="companyTest-grid" >
+  <!--  <grid model="com.axelor.employee.db.Company" title="CompanyTest" name="companyTest-grid" canArchive="false" canDelete="false" canEdit="false" edit-icon="false" canNew="false" customSearch="false"  orderBy="state"> --> 
+    
+     <toolbar>
+        <button onClick="clickMe" name="clickMeBtn" title="Click_Me" icon="fa-print" prompt="Are u sure (from toolbar)"/> 
+     </toolbar>
+     <menubar>
+        <menu title="button1">
+          <item action="action1" title="test1"/>
+        </menu>
+          <menu title="button2">
+          <item action="action1" title="test2"/>
+        </menu>
+     </menubar>
+     <hilite if="companyType == null" color="warning"/>
+     <field name="companyName"/>
+     <field name="companyType"/>
+     <field name="address"  />
+     <button onClick="clickMe" name="clickMeBtn" title="Click_Me" icon="fa-print" prompt="Are u sure ?"/>  
    </grid>
        
     <form model="com.axelor.employee.db.Company" title="Company" name="company-form">
       <panel>
          <field name="companyType"/>
          <field name="companyName" />
-         <field name="address" />
+         <field name="address" />  
            
             <panel-related field="employeeList" />
             <panel-related field="employeeInfoSet" />
