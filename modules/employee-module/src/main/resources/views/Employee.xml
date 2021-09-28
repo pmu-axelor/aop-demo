@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://axelor.com/xml/ns/object-views
        http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
     
-    <grid model="com.axelor.employee.db.Employee" title="Employees" name="employee-grid">
+    <grid model="com.axelor.employee.db.Employee" title="Employees" name="employee-grid" >  
       <field name="name" />
       <field name="designation" />
       <field name="salary" />
@@ -12,20 +12,34 @@
       <field name="transientTest"/>
       </grid> 
      
-    <form model="com.axelor.employee.db.Employee" title="Employee" name="employee-form">  
-       <panel>  
-        <field name="status" />
-        <field name="name" />
-        <field name="fullName" />
-        <field name="designation" />
-        <field name="salary" />
-        <field name="email"/>
-        <field name="transientTest"/>
-        <field name="bonus"/>
-        <field name="isActive" />
-        <field name="image" />
-        <field name="companies" />
-      </panel>
-    </form>  
+    <form model="com.axelor.employee.db.Employee" title="Employee" name="employee-form" readonlyIf="id" onNew="action.onnew.record" 
+      onLoad="acton-onLoad.validate" onSave="action-onSave-validate" width="large"  >  
+       <panel name="mainPanel" title="Main Panel" showFrame="true" if-module="">
+          <panel name="innerPanel1" title="inner Panel1" colSpan="8" >
+            <field name="status" showTitle="false" widget="NavSelect"/>
+            <field name="name" />
+            <field name="fullName" />
+            <field name="email"/>
+            <field name="designation" />
+            <field name="salary" />
+     </panel>
+            </panel>  
+           <panel name="innerPanel2" title="inner Panel2" colSpan="4" itemSpan="3" hideIf="salary &lt;= 10000" sidebar="true" stacked="true" collapseIf="true"> 
+             <field name="transientTest"/>
+             <field name="bonus"/>
+             <field name="isActive" />
+             <field name="image" />
+              <field name="companies" />
+        </panel>
+    </form>
     
+    <action-record name="action-onSave-validate" model="com.axelor.employee.db.Employee">
+          <field name="isActive" expr="true"/>
+      </action-record>
+    <action-validate name="acton-onLoad.validate">
+      <notify message="you r failed" if="status == STATUS.FAIL"/>
+    </action-validate>  
+     <action-record name="action.onnew.record" model="com.axelor.employee.db.Employee">
+        <field name="designation" expr="trainee developer"/>
+     </action-record>
   </object-views>     
