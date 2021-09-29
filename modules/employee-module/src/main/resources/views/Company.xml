@@ -32,16 +32,38 @@
      <button onClick="clickMe" name="clickMeBtn" title="Click_Me" icon="fa-print" prompt="Are u sure ?"/>  
    </grid>
        
-    <form model="com.axelor.employee.db.Company" title="Company" name="company-form">
+    <form model="com.axelor.employee.db.Company" title="Company" name="company-form" width="large">
       <panel>
          <field name="companyType"/>
          <field name="companyName" />
          <field name="address" />  
-           
-            <panel-related field="employeeList" />
-            <panel-related field="employeeInfoSet" />
-            
-      </panel>
+   </panel>
+        <panel-tabs>
+               <panel-related field="employeeList" colSpan="12"  grid-view="employee-grid" form-view="employee-popup-form" canMove="true" />
+            <panel-related field="employeeInfoSet" colSpan="12" />
+           <panel title="Employee Editor">
+             <field name="employeeList" showTitle="false">
+                 <editor x-viewer="true">
+                    <field name="name" />
+                    <field name="email" />
+                 </editor>
+             </field>
+           </panel> 
+                  <panel title="Employee Editor Viewer">
+             <field name="employeeList" showTitle="false">
+                <viewer>
+                     <![CDATA[
+                     <strong>{{record.name}}</strong>
+                       <h4>{{record.email}}</h4>
+                     ]]>
+                </viewer>
+                 <editor>
+                    <field name="name" />
+                    <field name="email" />
+                 </editor>
+             </field>
+           </panel> 
+        </panel-tabs>
     </form>   
        
   </object-views>

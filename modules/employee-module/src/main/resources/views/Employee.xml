@@ -13,8 +13,11 @@
       </grid> 
      
     <form model="com.axelor.employee.db.Employee" title="Employee" name="employee-form" readonlyIf="id" onNew="action.onnew.record" 
-      onLoad="acton-onLoad.validate" onSave="action-onSave-validate" width="large"  >  
+      onLoad="acton-onLoad.validate" onSave="action-onSave-validate" width="large"  > 
+        <panel-include view="employee-popup-form"/>
+       
        <panel name="mainPanel" title="Main Panel" showFrame="true" if-module="">
+       
           <panel name="innerPanel1" title="inner Panel1" colSpan="8" >
             <field name="status" showTitle="false" widget="NavSelect"/>
             <field name="name" />
@@ -31,6 +34,13 @@
              <field name="image" />
               <field name="companies" />
         </panel>
+    </form>
+    
+    <form model="com.axelor.employee.db.Employee" title="Employees" name="employee-popup-form">
+            <panel name="innerPanel1" title="Inner Panel1">
+               <field name="name" />
+               <field name="email"/>
+            </panel>
     </form>
     
     <action-record name="action-onSave-validate" model="com.axelor.employee.db.Employee">

@@ -12,15 +12,36 @@
    </grid>
       
     <form model="com.axelor.employee.db.EmployeeInfo" title="EmployeeInfo" name="employeeInfo-form">
-      <panel>
+      <panel name="MainPanel" title="Main Panel">
+           
+          <field name="$isValidate" title="Validate" type="one-to-many" target="com.axelor.employee.db.Address" colSpan="12"></field>
           <field name="name" />
           <field name="dateOfBirth"/>
           <field name="timeOfBirth"/>
-          <field name="dateAndTime"/>
-          <field name="sequence"/>
-          <field name="password"/>
-           <field name="image" />
-      </panel>    
+           <field name="sequence"/>
+           <field name="dateAndTime"/> 
+                
+         </panel>  
+       <panel-tabs>
+          <panel name="imageTab" title="Image">
+             <field name="image" />
+          </panel>
+          <panel name="passwordTab" title="Password" onTabSelect="action-ontabSelect-password">
+             <field name="password" widget="password"/> 
+          </panel>
+      </panel-tabs>
+      <panel sidebar="true">
+        <button onClick="cilckeMe-to-validate" name="ClickMe" title="Cilck to validate"/>
+      </panel>
     </form>  
-       
+         
+         <action-record name="action-ontabSelect-password" model="com.axelor.employee.db.EmployeeInfo">
+            <field name="password" expr="123" if="password == null"/>
+         </action-record>
+         <action-validate name="cilckeMe-to-validate">
+              <info message="validated successfully" if="password == 123"/>
+         </action-validate>
+         <action-record name="action-validate-onclick" model="com.axelor.employee.db.EmployeeInfo">
+               <field name="$isValidate" expr="eval: true"/>
+         </action-record>
   </object-views>     
