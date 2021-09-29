@@ -43,6 +43,23 @@
             </panel>
     </form>
     
+    <cards name="employee-card" model="com.axelor.employee.db.Employee" title="Employee Card" width="300px">
+         <field name="name" />
+         <field name="designation" />
+         <field name="email"/>
+         <field name="image" />
+         <template>
+            <![CDATA[
+             <div class="span4 card-image">
+             <img ng-src="{{$image(null, 'image')}}">
+              <strong>{{name}}</strong>
+            <strong>{{designation}}</strong>
+            <strong>{{email}}</strong>
+            </div>
+            ]]>
+         </template>
+    </cards>
+    
     <action-record name="action-onSave-validate" model="com.axelor.employee.db.Employee">
           <field name="isActive" expr="true"/>
       </action-record>
