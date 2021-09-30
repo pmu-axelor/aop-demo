@@ -60,6 +60,13 @@
          </template>
     </cards>
     
+    <search-filters name="search-filters-on-employee" model="com.axelor.employee.db.Employee" title="employee-search">
+       <field name="designation" hidden="true"/>
+       <filter title="Designation should not be null">
+         <domain>self.designation != null</domain>
+       </filter>
+    </search-filters>
+    
     <action-record name="action-onSave-validate" model="com.axelor.employee.db.Employee">
           <field name="isActive" expr="true"/>
       </action-record>

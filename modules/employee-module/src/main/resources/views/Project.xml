@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <object-views xmlns="http://axelor.com/xml/ns/object-views"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+       http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+      
+      <kanban columnBy="statusSelection" model="com.axelor.employee.db.Project" sequenceBy="priority" title="Projects" name="project-kanban" draggable="true"
+       onMove="action-validate-on-move" limit="2">
+         <field name="name"/>
+          <field name="percentage"/>
+            <field name="description"/>
+            <hilite color="danger" if="percentage == 0.00"/>
+            <template>
+               <![CDATA[
+               <div>
+                 <h3>Name:</h3>
+                 <h4>{{record.name}}</h4>
+                 <br/>
+                  <h3>%:</h3>
+                 <h4>{{record.percentage}}</h4>
+                 <br/>
+                  <h3>Description:</h3>
+                 <h4>{{record.description}}</h4>
+                 </div>
+               ]]>
+            </template>
+      </kanban>
+      
+      <form model="com.axelor.employee.db.Project" title="Project" name="form-kanban">
+        <panel name="mainPanel" title="Main Panel">
+          <field name="statusSelection" showTitle="false" widget="NavSelect" colSpan="12"/>
+          <field name="name"/>
+          <field name="percentage"/>
+            <field name="description"  widget="html" colSpan="12"/>
+        </panel>
+       </form>
+       
+       <form model="com.axelor.employee.db.Project" title="Master Details" name="employee-project-master-details">
+          <field name="name"/>
+          <field name="percentage"/>
+            <field name="description"  colSpan="12"/>
+       </form>
+       
+       <action-validate name="action-validate-on-move">
+           <info message="project moved!!"/>
+       </action-validate>
+       
+  </object-views>     

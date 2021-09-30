@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+       http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+       
+    <chart name="chart.progress.per.month" title="Project Progress"> 
+   <search-fields> 
+     <field type="datetime" name="fromDateTime" title="From Date"/>
+     <field type="datetime" name="toDateTime" title="To Date"/>
+   </search-fields>   
+   <dataset type="jpql">
+     <![CDATA[
+     
+     ]]>
+   </dataset>
+   <category key="month" type="month"/> 
+   <series key="amount" groupBy="customer" type="bar"/> 
+       </chart>
+ </object-views>      
