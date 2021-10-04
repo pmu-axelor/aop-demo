@@ -27,7 +27,7 @@
              <field name="image" widget="binary-link"/>
              <field name="image" widget="image"/>
           </panel>
-          <panel name="passwordTab" title="Password" onTabSelect="action-ontabSelect-password">
+          <panel name="passwordTab" title="Password" > <!-- onTabSelect="action-ontabSelect-password" --> 
              <field name="password" widget="password"/> 
           </panel>
       </panel-tabs>
@@ -39,9 +39,17 @@
          <action-record name="action-ontabSelect-password" model="com.axelor.employee.db.EmployeeInfo">
             <field name="password" expr="123" if="password == null"/>
          </action-record>
-         <action-validate name="cilckeMe-to-validate">
-              <info message="validated successfully" if="password == 123"/>
-         </action-validate>
+          <action-validate name="cilckeMe-to-validate">
+              <error message="password cannot be null" if="password == null"/>
+              <info message="validated successfully" if="password != null"/>
+              <notify message="validated successfully" if="password != null"/>  
+              <alert message="password length must be atleast 8 " if="password != null"/>
+         </action-validate> 
+         
+         <!-- <action-condition name="cilckeMe-to-validate">
+            <check field="password" if="password == null" error="password cannot be null" />
+         </action-condition> -->
+         
          <action-record name="action-validate-onclick" model="com.axelor.employee.db.EmployeeInfo">
                <field name="$isValidate" expr="eval: true"/>
          </action-record>

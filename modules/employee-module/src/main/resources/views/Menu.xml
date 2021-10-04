@@ -34,8 +34,8 @@
          <view type="grid" name="address-grid"/>
         <view type="form" name="address-form"/>
     </action-view>
-    
-     <menuitem title="Testing-Adddress" name="address-details-testing" parent="employee-details" action="action.address.details.testing"/>
+  
+    <menuitem title="Testing-Adddress" name="address-details-testing" parent="employee-details" action="action.address.details.testing"/>
     <action-view name="action.address.details.testing" title="Addresses" model="com.axelor.employee.db.Address">
          <view type="grid" name="address-grid"/>
         <view type="form" name="address-form"/>
@@ -44,7 +44,7 @@
     
     <menuitem title="CompanyTest" name="companyTest-name" parent="employee-details" action="action.companyTest.name"/>  
     <action-view name="action.companyTest.name" title="Companys" model="com.axelor.employee.db.Company">
-       <view type="grid" name="company-grid"/>
+       <view type="grid" name="companyTest-grid"/>
         <view type="form" name="company-form"/>
         <context name="_showRecord" expr="eval: 1"/>
     </action-view>
@@ -53,7 +53,8 @@
       <action-view name="action.employeeInfo.details" title="EmployeeInfos" model="com.axelor.employee.db.EmployeeInfo">
         <view type="grid" name="employeeInfo-grid"/>
         <view type="form" name="employeeInfo-form"/>
-      </action-view>
+       </action-view>
+       
      
       <menuitem title="Projects" name="project-details" parent="employee-details" action="action-employee-project"/>
         <action-view name="action-employee-project" title="Project" model="com.axelor.employee.db.Project">
@@ -61,8 +62,8 @@
           <view type="form" name="form-kanban"/>
         </action-view>
         
-        <menuitem title="Project Progress" name="project-progress" parent="employee-details" action="action.project.progress"/>
+       <!--  <menuitem title="Project Progress" name="project-progress" parent="employee-details" action="action.project.progress"/>
           <action-view name="action.project.progress" title="Project Progressess">
            <view type="chart" name="chart.progress.per.month"/>
-          </action-view>
+          </action-view> -->
   </object-views>      
