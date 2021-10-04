@@ -12,8 +12,10 @@
             
             <string name="companyName" title="Company_Name" namecolumn="true"></string>
           
+             <one-to-one ref="com.axelor.employee.db.Address" name="address" /> 
+          
            <one-to-many name="employeeList" title="EMPLOYEES" ref="com.axelor.employee.db.Employee" mappedBy="companies" orderBy="salary"/>
-           <one-to-one ref="com.axelor.employee.db.Address" name="address" /> 
+        
            <many-to-many name="employeeInfoSet" ref="com.axelor.employee.db.EmployeeInfo" title="EMPLOYEE_INFO" />
           
            <extra-code>

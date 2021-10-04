@@ -15,6 +15,8 @@
         <view-param name="showArchived" value="true"/>
         <view-param name="details-view" value="true"/>
         <view-param name="search-filters" value="search-filters-on-employee"/>
+        <view-param name="popup-save" value="false"/>
+        
      </action-view>
      
      <!-- <menuitem title="All Employees" name="employees-top-root" top="true"/>
@@ -42,7 +44,7 @@
     
     <menuitem title="CompanyTest" name="companyTest-name" parent="employee-details" action="action.companyTest.name"/>  
     <action-view name="action.companyTest.name" title="Companys" model="com.axelor.employee.db.Company">
-       <view type="grid" name="companyTest-grid"/>
+       <view type="grid" name="company-grid"/>
         <view type="form" name="company-form"/>
         <context name="_showRecord" expr="eval: 1"/>
     </action-view>

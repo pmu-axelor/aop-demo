@@ -24,7 +24,8 @@
          </panel>  
        <panel-tabs>
           <panel name="imageTab" title="Image">
-             <field name="image" />
+             <field name="image" widget="binary-link"/>
+             <field name="image" widget="image"/>
           </panel>
           <panel name="passwordTab" title="Password" onTabSelect="action-ontabSelect-password">
              <field name="password" widget="password"/> 
