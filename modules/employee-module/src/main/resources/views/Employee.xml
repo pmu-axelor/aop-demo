@@ -16,10 +16,10 @@
       onLoad="acton-onLoad.validate" onSave="action-onSave-validate" width="large"  > 
         <panel-include view="employee-popup-form"/>
        
-       <panel name="mainPanel" title="Main Panel" showFrame="true" if-module="">
+       <panel name="mainPanel" title="Main Panel" showFrame="true">
        
           <panel name="innerPanel1" title="inner Panel1" colSpan="8" >
-            <field name="status" showTitle="false" widget="NavSelect"/>
+            <field name="status" showTitle="false" widget="NavSelect" colSpan="8"/>
             <field name="name" />
             <field name="fullName" />
             <field name="email"/>
@@ -27,7 +27,7 @@
             <field name="salary" />
      </panel>
             </panel>  
-           <panel name="innerPanel2" title="inner Panel2" colSpan="4" itemSpan="3" hideIf="salary &lt;= 10000" sidebar="true" stacked="true" collapseIf="true"> 
+           <panel name="innerPanel2" title="inner Panel2" colSpan="4"  itemSpan="3" hideIf="salary &lt;= 10000" sidebar="true" stacked="true" collapseIf="true"> 
              <field name="transientTest"/>
              <field name="bonus"/>
              <field name="isActive" />
@@ -39,7 +39,7 @@
     <form model="com.axelor.employee.db.Employee" title="Employees" name="employee-popup-form">
             <panel name="innerPanel1" title="Inner Panel1">
                <field name="name" />
-               <field name="email"/>
+               <field name="email" widget="email"/>
             </panel>
     </form>
     
@@ -55,13 +55,14 @@
               <strong>{{name}}</strong>
             <strong>{{designation}}</strong>
             <strong>{{email}}</strong>
+            <strong>{{isActive}}</strong>
             </div>
             ]]>
          </template>
     </cards>
     
     <search-filters name="search-filters-on-employee" model="com.axelor.employee.db.Employee" title="employee-search">
-       <field name="designation" hidden="true"/>
+       <field name="designation"/>
        <filter title="Designation should not be null">
          <domain>self.designation != null</domain>
        </filter>
@@ -71,12 +72,11 @@
           <field name="isActive" expr="true"/>
       </action-record>
     <action-validate name="acton-onLoad.validate">
-      <notify message="you r failed" if="status == STATUS.FAIL"/>
+      <notify message="you r from Non-Technical department" if="status == STATUS.NONTECHNICAL"/>
     </action-validate>  
      <action-record name="action.onnew.record" model="com.axelor.employee.db.Employee">
-        <field name="designation" expr="trainee developer"/>
-        <field name="status" expr="eval: STATUS.PASS"/>
-        <field name="salary" expr="eval: 30000"/>
+        <field name="status" expr="eval: STATUS.TECHNICAL"/>
+        <field name="salary" expr="30000"/>
         <field name="companies" expr="action: action-record-default-company-details"/>
      </action-record>
       <action-record name="action-record-default-company-details" model="com.axelor.employee.db.Company" search="self.address IS NOT NULL">

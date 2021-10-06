@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+          http://axelor.com/xml/ns/domain-models/domain-models_5.0.xsd">
+          
+          <module package="com.axelor.employee.db" name="employee"/>
+          
+          <entity name="Contact" table="contactDetails">
+           
+           <string name="name" title="Name" />
+           <string name="email" title="Email"/>
+           <string name="phone" title="PhoneNo"/>
+           <string name="street" title="Street" />
+           <string name="area" title="Area" />
+           <string name="city" title="City"/>
+           <string name="zip" title="Zip"/>
+           <string name="state" title="State"/>
+           
+          </entity>
+          
+ </domain-models>         

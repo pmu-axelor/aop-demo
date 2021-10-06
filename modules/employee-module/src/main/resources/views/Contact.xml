@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <object-views xmlns="http://axelor.com/xml/ns/object-views"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+       http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+       
+  <grid model="com.axelor.employee.db.Contact" title="Contacts" name="contact-grid" orderBy="name" canMove="true" >
+    <field name="name"/>
+    <field name="phone"/>
+    <field name="city"/>
+    <field name="state"/>
+  </grid>  
+  
+  <form model="com.axelor.employee.db.Contact" title="Contact" name="contact-form" onSave="action-contact-details" width="mid" >
+    <panel>
+    <field name="name"/>
+    <field name="email" widget="email"/>  <!-- onChange="com.contact.web.HelloController:validate(email)" -->
+     <field name="phone" widget="phone"/>
+    <field name="street"/>
+    <field name="area"/>
+    <field name="city"/>
+    <field name="zip"/>
+    <field name="state"/>
+       
+     <button name="greet" title="Greet" onClick="com.contact.web.HelloController:say" />
+    <!-- <button onClick="action-method-address-say" title="Click Me" name="clickMe"/> -->
+    </panel>
+  </form>   
+       <action-validate name="action-contact-details">
+          <notify message="contact-details is saved"/>
+       </action-validate>
+       
+       <!-- <action-method name="action-method-address-say">
+           <call class="com.contact.web.HelloController" method="say"/>
+         </action-method> -->
+       
+ </object-views>      

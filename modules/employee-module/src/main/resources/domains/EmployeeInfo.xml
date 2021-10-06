@@ -16,7 +16,7 @@
          <time name="timeOfBirth" title="TIME OF BIRTH" />
          <datetime name="dateAndTime" title="DATE AND TIME" tz="true" />
          <string name="sequence" title="REFERENCE" sequence="employeeInfo.sequence" readonly="true" /> 
-         <string name="password" title="PASSWORD" password="true" encrypted="true"/> 
+         <string name="password" title="PASSWORD"/> 
          <many-to-one name="image" title="IMAGE"  ref="com.axelor.meta.db.MetaFile" />
          
        

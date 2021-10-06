@@ -8,9 +8,9 @@
           
             <entity name="Company" table="companyName">
             
-            <string name="companyType" title="COMPANY_TYPE" selection="employee.company.company.type"></string>
+            <string name="companyType" title="COMPANY_TYPE" selection="employee.company.company.type"/>
             
-            <string name="companyName" title="Company_Name" namecolumn="true"></string>
+            <string name="companyName" title="Company_Name" namecolumn="true"/>
           
              <one-to-one ref="com.axelor.employee.db.Address" name="address" /> 
           

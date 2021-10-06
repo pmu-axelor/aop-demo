@@ -2,7 +2,7 @@
  <object-views xmlns="http://axelor.com/xml/ns/object-views"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://axelor.com/xml/ns/object-views
-       http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+       http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
       
       <kanban columnBy="statusSelection" model="com.axelor.employee.db.Project" sequenceBy="priority" title="Projects" name="project-kanban" draggable="true"
        onMove="action-validate-on-move" limit="2">
@@ -35,22 +35,24 @@
         </panel>
        </form>
        
-       <form model="com.axelor.employee.db.Project" title="Master Details" name="employee-project-master-details">
+      <!--  <form model="com.axelor.employee.db.Project" title="Project Details" name="employee-projectTest-details">
           <field name="name"/>
-          <field name="percentage"/>
+          <field name="percentage" />
             <field name="description"  colSpan="12"/>
-       </form>
+       </form> -->
        
        <action-group name="action-group-onchange-status">
-          <action name="save"/>
+           <action name="save"/>
           <action name="action-attr-to-change-view-attr"/>
           <action name="save"/>
+          
        </action-group>
        
        <action-attrs name="action-attr-to-change-view-attr">
-         <attribute name="readonly" for="name" expr="eval: true" if="statusSelection &gt;= 1"/>
-         <attribute name="title" for="mainPanel" expr="eval: statusSelection &gt;= 1 ? &quot;Validate&quot; : &quot;MainPanel&quot;"/>
-       </action-attrs>
+           <attribute name="readonly" for="name" expr="eval: true" if="statusSelection &gt;='1'"/> 
+          <attribute name="title" for="mainPanel" expr="eval: statusSelection &gt;='1' ? &quot;Validated&quot; : &quot;MainPanel&quot;"/> 
+         
+        </action-attrs>
        
        <action-validate name="action-validate-on-move">
            <info message="project moved!!"/>

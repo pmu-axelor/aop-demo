@@ -6,17 +6,16 @@
  
    <menuitem title="Employees-Information" name="employee-details" order="-111"/>
  
-   <menuitem title="All Employees" name="employee-info" parent="employee-details" action="action-employee-info" icon="fa-user" icon-background="green" tag-count="true" />
+   <menuitem title="Employees" name="employee-info" parent="employee-details" action="action-employee-info" icon="fa-user" icon-background="green" tag-count="true" />
   <action-view name="action-employee-info" title="Employees" model="com.axelor.employee.db.Employee">
        <view type="grid" name="employee-grid"/>
         <view type="form" name="employee-form"/>
         <view type="cards" name="employee-card"/>
         <view-param name="forceEdit" value="true"/>
         <view-param name="showArchived" value="true"/>
-        <view-param name="details-view" value="true"/>
+         <view-param name="details-view" value="true"/> 
         <view-param name="search-filters" value="search-filters-on-employee"/>
         <view-param name="popup-save" value="false"/>
-        
      </action-view>
      
      <!-- <menuitem title="All Employees" name="employees-top-root" top="true"/>
@@ -38,7 +37,7 @@
     <menuitem title="Testing-Adddress" name="address-details-testing" parent="employee-details" action="action.address.details.testing"/>
     <action-view name="action.address.details.testing" title="Addresses" model="com.axelor.employee.db.Address">
          <view type="grid" name="address-grid"/>
-        <view type="form" name="address-form"/>
+        <view type="form" name="addressTesting-form"/>
         <context name="_completeAddress" expr="testing "/>  
     </action-view>   
     
@@ -56,11 +55,18 @@
        </action-view>
        
      
-      <menuitem title="Projects" name="project-details" parent="employee-details" action="action-employee-project"/>
-        <action-view name="action-employee-project" title="Project" model="com.axelor.employee.db.Project">
+      <menuitem title="Projects" name="project-details" parent="employee-details" action="action.employee.project"/>
+        <action-view name="action.employee.project" title="Project" model="com.axelor.employee.db.Project">
           <view type="kanban" name="project-kanban"/>
           <view type="form" name="form-kanban"/>
-        </action-view>
+       </action-view>
+       
+       <menuitem title="Contact" name="employee-contact" parent="employee-details" action="action.employee.contact.details"/>
+         <action-view name="action.employee.contact.details" title="Contacts" model="com.axelor.employee.db.Contact">
+            <view type="grid" name="contact-grid"/>
+            <view type="form" name="contact-form"/>
+         </action-view>
+        
         
        <!--  <menuitem title="Project Progress" name="project-progress" parent="employee-details" action="action.project.progress"/>
           <action-view name="action.project.progress" title="Project Progressess">

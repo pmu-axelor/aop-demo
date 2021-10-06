@@ -54,7 +54,7 @@
                 <viewer>
                      <![CDATA[
                      <strong>{{record.name}}</strong>
-                       <h4>{{record.email}}</h4>
+                     <h4>{{record.email}}</h4>
                      ]]>
                 </viewer>
                  <editor>

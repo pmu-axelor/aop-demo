@@ -8,8 +8,8 @@
        
       
       <enum name="STATUS">
-      <item name="PASS" value="pass"/>
-      <item name="FAIL" value="fail"/>
+      <item name="TECHNICAL" value="technical"/>
+      <item name="NONTECHNICAL" value="nonTechnical"/>
       </enum>
       
     <entity name="Employee" > <!-- entity class or table name -->

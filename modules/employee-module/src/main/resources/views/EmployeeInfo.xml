@@ -14,7 +14,7 @@
     <form model="com.axelor.employee.db.EmployeeInfo" title="EmployeeInfo" name="employeeInfo-form">
       <panel name="MainPanel" title="Main Panel">
            
-          <field name="$isValidate" title="Validate" type="one-to-many" target="com.axelor.employee.db.Address" colSpan="12"></field>
+          <field name="$isValidate" title="Validate" type="one-to-many" target="com.axelor.employee.db.Address" colSpan="12"/>
           <field name="name" />
           <field name="dateOfBirth"/>
           <field name="timeOfBirth"/>
@@ -28,22 +28,25 @@
              <field name="image" widget="image"/>
           </panel>
           <panel name="passwordTab" title="Password" > <!-- onTabSelect="action-ontabSelect-password" --> 
-             <field name="password" widget="password"/> 
+             <field name="password" widget="password" /> 
           </panel>
       </panel-tabs>
       <panel sidebar="true">
         <button onClick="cilckeMe-to-validate" name="ClickMe" title="Cilck to validate"/>
+        <!-- <button onClick="action-validate-onclick" name="ClickMe" title="Cilck to validate"/> -->
       </panel>
     </form>  
          
-         <action-record name="action-ontabSelect-password" model="com.axelor.employee.db.EmployeeInfo">
+        <!--  <action-record name="action-ontabSelect-password" model="com.axelor.employee.db.EmployeeInfo">
             <field name="password" expr="123" if="password == null"/>
-         </action-record>
+         </action-record> -->
+         
           <action-validate name="cilckeMe-to-validate">
-              <error message="password cannot be null" if="password == null"/>
+              <error message="password cannot be null" if="password == null"/> 
+             <!--  <alert message="password length must be atleast 8 " if="password != null"/> -->
               <info message="validated successfully" if="password != null"/>
-              <notify message="validated successfully" if="password != null"/>  
-              <alert message="password length must be atleast 8 " if="password != null"/>
+              <!--  <notify message="validated successfully" if="password != null"/>  --> 
+               
          </action-validate> 
          
          <!-- <action-condition name="cilckeMe-to-validate">

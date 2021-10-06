@@ -11,21 +11,27 @@
     <field name="company" />
    </grid>
 
-   <form model="com.axelor.employee.db.Address" title="Address" name="address-form" onNew="action-record-to-test-context">
+   <form model="com.axelor.employee.db.Address" title="Address" name="address-form">
      <panel>
          <field name="city" />
          <field name="state" />
          <field name="completeAddress" />
          <field name="company" />
-         <button onClick="action-method-address-say" title="Click Me" name="clickMe"/>
     </panel>
     </form>    
+    
+    <form model="com.axelor.employee.db.Address" title="Address" name="addressTesting-form" onNew="action-record-to-test-context">
+     <panel>
+         <field name="city" />
+         <field name="state" />
+         <field name="completeAddress" />
+         <field name="company" />
+         
+    </panel>
+    </form> 
+    
          <action-record name="action-record-to-test-context" model="com.axelor.employee.db.Address">
              <field name="completeAddress" expr="eval: _completeAddress"/>
          </action-record>
          
-         <action-method name="action-method-address-say">
-           <call class="com.contact.web.HelloController" method="say"/>
-         </action-method>
-         
-  </object-views>     
+   </object-views>     
