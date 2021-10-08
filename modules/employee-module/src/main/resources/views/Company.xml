@@ -39,7 +39,7 @@
          <field name="address" />  
    </panel>
         <panel-tabs>
-               <panel-related field="employeeList" colSpan="12"  grid-view="employee-grid" form-view="employee-popup-form" canMove="true" />
+               <panel-related field="employeeList" colSpan="12"  grid-view="employee-grid" form-view="employee-popup-form" />
             <panel-related field="employeeInfoSet" colSpan="12" />
            <panel title="Employee Editor">
              <field name="employeeList" showTitle="false">

@@ -16,24 +16,25 @@
     
      <enum name="status" ref="STATUS" /> 
      <string name="name" title="NAME" />
-     <string name="email" title="EMAIL" required="true" unique="true" />
      <string name="designation" title="DESIGNATION" help="this is your current position in your organization"/>
      <integer name="salary" title="SALARY" default="5000" massUpdate="true" />
     
-    <string name="fullName" title="FULL_NAME" search="name,email">
+   <!--  <string name="fullName" title="FULL_NAME" search="name,email">
      <![CDATA[
         return name + ":" + email ;
      ]]>
-    </string>
+    </string> -->
     
      <string name="transientTest" title="Transient_Test" transient="true"  />
      
      <decimal name="bonus" title="BONUS" precision="5" scale="2" />
      <boolean name="isActive" title="IS_ACTIVE" />
      
-     <binary name="image" title="IMAGE" ></binary>
+     <binary name="image" title="IMAGE" />
      
      <many-to-one name="companies" title="Company" ref="com.axelor.employee.db.Company" />
+     
+      <string name="email" title="EMAIL" />
      
      <finder-method name="findByNameAndEmail" using="name,email"/>
      <finder-method name="findAllByNameAndEmail" using="name,email" all="true"/>

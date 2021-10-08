@@ -11,7 +11,7 @@
      <field name="dateAndTime"/>
    </grid>
       
-    <form model="com.axelor.employee.db.EmployeeInfo" title="EmployeeInfo" name="employeeInfo-form">
+    <form model="com.axelor.employee.db.EmployeeInfo" title="EmployeeInfo" name="employeeInfo-form" >   <!-- onLoad="action-onload-for-date-time-details" -->
       <panel name="MainPanel" title="Main Panel">
            
           <field name="$isValidate" title="Validate" type="one-to-many" target="com.axelor.employee.db.Address" colSpan="12"/>
@@ -32,8 +32,8 @@
           </panel>
       </panel-tabs>
       <panel sidebar="true">
-        <button onClick="cilckeMe-to-validate" name="ClickMe" title="Cilck to validate"/>
-        <!-- <button onClick="action-validate-onclick" name="ClickMe" title="Cilck to validate"/> -->
+         <button onClick="cilckeMe-to-validate" name="ClickMe" title="Cilck to validate"/>
+         <!-- <button onClick="action-validate-onclick" name="ClickMe" title="Cilck to validate"/> --> 
       </panel>
     </form>  
          
@@ -53,7 +53,14 @@
             <check field="password" if="password == null" error="password cannot be null" />
          </action-condition> -->
          
-         <action-record name="action-validate-onclick" model="com.axelor.employee.db.EmployeeInfo">
+       <!--   <action-record name="action-validate-onclick" model="com.axelor.employee.db.EmployeeInfo">
                <field name="$isValidate" expr="eval: true"/>
          </action-record>
+          -->
+       <!--   <action-attrs name="action-onload-for-date-time-details">
+            <attribute name="value" for="dateOfBirth" expr="eval: __date__"/>
+            <attribute name="value" for="timeOfBirth" expr="eval: __time__"/>
+            <attribute name="value" for="dateAndTime" expr="eval: __datetime__"/>
+         </action-attrs> -->
+         
   </object-views>     
