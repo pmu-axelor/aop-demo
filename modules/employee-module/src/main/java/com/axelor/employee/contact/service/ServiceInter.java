@@ -1,4 +1,4 @@
-package com.contact.service;
+package com.axelor.employee.contact.service;
 
 import com.axelor.employee.db.Contact;
 
@@ -6,5 +6,7 @@ public interface ServiceInter {
 
 	  public String say(Contact contact);
 	  
-	  public String hello();
+	  public void says(Contact contact);
+	  
+	 // public String hello();*/
 }

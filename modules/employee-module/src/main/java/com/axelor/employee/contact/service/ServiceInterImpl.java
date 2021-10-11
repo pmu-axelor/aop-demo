@@ -1,4 +1,4 @@
-package com.contact.service;
+package com.axelor.employee.contact.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +16,15 @@ public String say(Contact contact) {
 }
 
 @Override
+public void says(Contact contact) {
+	
+	System.err.println("this is from says method of impl");
+	
+}
+/*
+@Override
 public String hello() {
 	
 	return "hello hii!!";
-}
+} */
 }

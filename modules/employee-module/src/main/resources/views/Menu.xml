@@ -4,18 +4,17 @@
         xsi:schemaLocation="http://axelor.com/xml/ns/object-views
        http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
  
-   <menuitem title="Employees-Information" name="employee-details" order="-111"/>
+   <menuitem title="Employees-Information" name="employee-details" order="-111" />
  
    <menuitem title="Employees" name="employee-info" parent="employee-details" action="action-employee-info" icon="fa-user" icon-background="green" tag-count="true" tag-style="success"/>
-  <action-view name="action-employee-info" title="Employees" model="com.axelor.employee.db.Employee">
+  <action-view name="action-employee-info" title="Employees" model="com.axelor.employee.db.Employee" >
        <view type="grid" name="employee-grid"/>
         <view type="form" name="employee-form"/>
         <view type="cards" name="employee-card"/>
         <!-- <view-param name="forceEdit" value="true"/> -->
-        <view-param name="showArchived" value="true"/>
+         <view-param name="showArchived" value="true"/>
          <view-param name="details-view" value="true"/> 
-        <view-param name="search-filters" value="search-filters-on-employee"/>
-        <view-param name="popup" value="true"/>
+         <view-param name="search-filters" value="search-filters-on-employee"/>
      </action-view>
      
      <!-- <menuitem title="All Employees" name="employees-top-root" top="true"/>
@@ -38,6 +37,7 @@
     <action-view name="action.address.details.testing" title="Addresses" model="com.axelor.employee.db.Address">
          <view type="grid" name="address-grid"/>
         <view type="form" name="addressTesting-form"/>
+        <!-- <domain>self.completeAddress = :_completeAddress</domain> -->
         <context name="_completeAddress" expr="testing "/>  
     </action-view>   
     

@@ -16,7 +16,7 @@
        onSave="action-onSave-validate" width="large" >  <!-- onLoad="acton-onLoad.validate" -->
         <panel-include view="employee-popup-form"/>
        
-       <panel name="mainPanel" title="Main Panel" showFrame="true">
+       <panel name="mainPanel" title="Main Panel" showFrame="true" attached="true">
        
           <panel name="innerPanel1" title="inner Panel1" colSpan="8" >
             <field name="status" showTitle="false" widget="NavSelect" colSpan="8"/>
@@ -30,7 +30,7 @@
              <field name="transientTest"/>
              <field name="bonus"/>
              <field name="isActive" />
-             <field name="image"/>
+             <field name="image" widget="image"/>
              <!--  <field name="companies" /> -->
         </panel>
     </form>
@@ -39,7 +39,7 @@
             <panel name="innerPanel1" title="Inner Panel1">
                <field name="name" />
                <field name="email" />
-               <field name="companies"/>
+               <field name="companies" />
             </panel>
     </form>
     
@@ -87,8 +87,8 @@
       </action-record>
       
       <action-attrs name="action-onSave-validate">
-          <attribute name="value" for="isActive" expr="eval: true"/>
-         <attribute name="value" for="email" expr="eval:__this__.name+'@'+companies.companyName+'.com'" if="name != null"/> 
+         <attribute name="value" for="isActive" expr="eval: true"/>
+         <attribute name="value" for="email" expr="eval:__this__.name+'@'+companies.companyName+'.com'" if="name != null"/>  
       </action-attrs>
       
   </object-views>     
