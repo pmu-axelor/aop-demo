@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+       http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+       
+  <grid model="com.axelor.employee.db.Employee" title="NonTechnical Employees" name="non-technical-employee-grid" >  
+      <field name="name" />
+      <field name="designation" />
+      <field name="salary" />
+      <field name="email"/>
+      <field name="status"/>
+      </grid>      
+       
+  <form model="com.axelor.employee.db.Employee" title="Non Technical Employees" name="non-technical-employee-form" width="large" onNew="action.onNew.record.non.technical.employee">
+   <panel-include view="non-technical-employee-popup-form"/>
+       
+       <panel name="mainPanel" title="Main Panel" showFrame="true" attached="true">
+       
+            <field name="status" showTitle="false" widget="NavSelect" colSpan="8" readonly="true"/>
+            <field name="name" onChange="action-onChnage-update-email-non-technical-employee"/>
+            <field name="email"/>
+            <field name="designation" />
+            <field name="salary" />
+        </panel>  
+           <panel name="innerPanel2" title="Inner Panel" colSpan="4"  itemSpan="3" hideIf="salary &lt;= 5000" sidebar="true" stacked="true" collapseIf="true"> 
+             <field name="transientTest"/>
+             <field name="bonus"/>
+             <field name="isActive" />
+             <field name="image" widget="image"/>
+        </panel>
+    </form>
+    
+    <form model="com.axelor.employee.db.Employee" title="Employees" name="non-technical-employee-popup-form">
+            <panel name="innerPanel1" >
+               <field name="name" onChange="action-onChnage-update-email-non-technical-employee"/>
+               <field name="email" />
+               <field name="companies" />
+            </panel>
+      </form>
+      
+      <action-record name="action.onNew.record.non.technical.employee" model="com.axelor.employee.db.Employee">
+         <field name="isActive" expr="eval: true"/>
+         <field name="status" expr="eval: STATUS.NONTECHNICAL"/>
+         <field name="companies" expr="action: action-record-default-companys-detail"/>
+      </action-record>
+      
+     <action-record name="action-record-default-companys-detail" model="com.axelor.employee.db.Company" search="self.address IS NOT NULL">
+        <field name="companyName" expr="Default"/>
+      </action-record>
+      
+      <action-attrs name="action-onChnage-update-email-non-technical-employee">
+           <attribute name="value" for="email" expr="eval:__this__.name+'@'+companies.companyName+'.com'" if="name != null"/>
+      </action-attrs>
+</object-views>      

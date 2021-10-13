@@ -11,17 +11,18 @@ import com.axelor.meta.schema.actions.ActionView;
 import com.axelor.meta.schema.actions.ActionView.ActionViewBuilder;
 import com.axelor.rpc.ActionRequest;
 import com.axelor.rpc.ActionResponse;
+import com.axelor.rpc.Context;
 import com.axelor.rpc.Response;
 import com.google.inject.Inject;
 
 public class HelloController {
    
-	 
-	/*@Inject ServiceInter serviceInter;*/
-	
 	 public void say(ActionRequest request, ActionResponse response) {
 		
-		 Contact contact = request.getContext().asType(Contact.class);
+		 
+		 Context context = request.getContext();
+		 
+		 Contact contact = context.asType(Contact.class);
 		 System.err.println(contact);
 		 
 		if(contact.getId() != null) {
@@ -29,15 +30,10 @@ public class HelloController {
 		}
 		System.err.println(contact);  
 		
-		Beans.get(ServiceInter.class).say(contact);
-		
-		
-		
-		
+		String mssg = Beans.get(ServiceInter.class).say(contact);
+		     response.setFlash(mssg);
 		 
-		       /*String message = serviceInter.say(contact);
-		       
-		       response.setFlash(message);*/
+		     
 		 
 	 }
 	 
@@ -54,17 +50,25 @@ public class HelloController {
 		
 		Beans.get(ServiceInter.class).says(contact);
 		
-		response.setFlash("street is changed");
+		
+	  	response.setFlash("street is changed");
+		 //   response.setError("this is a error");
+		   //    response.setAlert("this is a warning message"); 
+		     //     response.setNotify("this is to notify you");
+		 
+		
 		
 		response.setAttr("state", "value", "Gujarat");
 		response.setAttr("phone", "title", "Phone");
+		
+		
+		
 		ActionViewBuilder actionViewBuilder = ActionView.define("Contacts").model(Contact.class.getName()).add("grid", "contact-grid");
 		response.setView(actionViewBuilder.map());
 		
-		
- }
+   }
 	 
-	/* @CallMethod
+	/*   @CallMethod
 	 public Response validate(String email) {
 		 
 		 Response response = new ActionResponse();
@@ -76,7 +80,7 @@ public class HelloController {
 		 }
 		return response;
 		 
-	 }*/
+	 }   */
 	
 	 
 }

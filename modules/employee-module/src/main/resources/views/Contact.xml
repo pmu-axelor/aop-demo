@@ -18,23 +18,23 @@
      <field name="name"/>
     <field name="email" widget="email"/>   <!-- onChange="com.contact.web.HelloController:validate(email)" -->
      <field name="phone" widget="phone"/>
-    <field name="street" onChange="action-method-address-say"/>
+    <field name="street" onChange="save,action-method-address-says"/>
     <field name="area"/>
     <field name="city"/>
     <field name="zip"/>
     <field name="state"/>
-       
-    <!--  <button name="greet" title="Greet" onClick="com.contact.web.HelloController:say" /> -->
-     <!-- <button onClick="action-method-address-say" title="Click Me" name="clickMe"/>  -->
-    </panel>
+           <!-- <button onClick="action-method-address-say" title="Click Me" name="clickMe"/>  -->
+    </panel> 
+         <panel attached="true">
+             <button name="greet" title="Click Me" onClick="com.axelor.employee.contact.web.HelloController:say" /> 
+        </panel>
   </form>   
        <action-validate name="action-contact-details">
           <notify message="contact-details is saved"/>
        </action-validate>
        
-        <action-method name="action-method-address-say">
+        <action-method name="action-method-address-says">
            <call class="com.axelor.employee.contact.web.HelloController" method="says"/>
-           
          </action-method> 
        
  </object-views>      

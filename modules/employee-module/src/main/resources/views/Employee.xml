@@ -4,26 +4,26 @@
         xsi:schemaLocation="http://axelor.com/xml/ns/object-views
        http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
     
-    <grid model="com.axelor.employee.db.Employee" title="Employees" name="employee-grid" >  
-      <field name="name" />
-      <field name="designation" />
-      <field name="salary" />
+    <grid model="com.axelor.employee.db.Employee" title="Employees" name="employee-grid" orderBy="designation">  
+      <field name="name"/>
+      <field name="designation"/>
+      <field name="salary"/>
       <field name="email"/>
-      <field name="transientTest"/>
+      <field name="status"/>
       </grid> 
      
     <form model="com.axelor.employee.db.Employee" title="Employee" name="employee-form"  onNew="action.onnew.record" 
-       onSave="action-onSave-validate" width="large" >  <!-- onLoad="acton-onLoad.validate" -->
+       width="large" >  <!-- onLoad="acton-onLoad.validate"      onSave="action-onSave-validate" --> 
         <panel-include view="employee-popup-form"/>
        
        <panel name="mainPanel" title="Main Panel" showFrame="true" attached="true">
        
-          <panel name="innerPanel1" title="inner Panel1" colSpan="8" >
+          <panel name="innerPanel1" colSpan="8" >
             <field name="status" showTitle="false" widget="NavSelect" colSpan="8"/>
-            <field name="name" />
+            <field name="name" onChange="action-onChnage-update-email"/>
             <field name="email"/>
             <field name="designation" />
-            <field name="salary" readonlyIf="id"/>
+            <field name="salary" />
      </panel>
             </panel>  
            <panel name="innerPanel2" title="inner Panel2" colSpan="4"  itemSpan="3" hideIf="salary &lt;= 5000" sidebar="true" stacked="true" collapseIf="true"> 
@@ -31,13 +31,12 @@
              <field name="bonus"/>
              <field name="isActive" />
              <field name="image" widget="image"/>
-             <!--  <field name="companies" /> -->
         </panel>
     </form>
     
     <form model="com.axelor.employee.db.Employee" title="Employees" name="employee-popup-form">
-            <panel name="innerPanel1" title="Inner Panel1">
-               <field name="name" />
+            <panel name="innerPanel1">
+               <field name="name" onChange="action-onChnage-update-email"/>
                <field name="email" />
                <field name="companies" />
             </panel>
@@ -68,27 +67,28 @@
        </filter>
     </search-filters>
     
-   <!--  <action-record name="action-onSave-validate" model="com.axelor.employee.db.Employee">
-           <attribute name="value" for="isActive" expr="eval: true"/>
-      </action-record> -->
-      
-    <!-- <action-validate name="acton-onLoad.validate">
+      <!-- <action-validate name="acton-onLoad.validate">
       <notify message="you r from Non-Technical department" if="status == STATUS.NONTECHNICAL"/>
     </action-validate>  --> 
     
      <action-record name="action.onnew.record" model="com.axelor.employee.db.Employee">
         <field name="status" expr="eval: STATUS.TECHNICAL"/>
-        <field name="salary" expr="30000"/>
+        <field name="salary" expr="10000"/>
+        <field name="isActive" expr="eval: true"/>
         <field name="companies" expr="action: action-record-default-company-details"/>
      </action-record>
      
       <action-record name="action-record-default-company-details" model="com.axelor.employee.db.Company" search="self.address IS NOT NULL">
-        <field name="companyName" expr="Default"/>  
+        <field name="companyName" expr="Default"/>
       </action-record>
       
-      <action-attrs name="action-onSave-validate">
+     <!--  <action-attrs name="action-onSave-validate">
          <attribute name="value" for="isActive" expr="eval: true"/>
-         <attribute name="value" for="email" expr="eval:__this__.name+'@'+companies.companyName+'.com'" if="name != null"/>  
+      </action-attrs> -->
+    
+      <action-attrs name="action-onChnage-update-email">
+           <attribute name="value" for="email" expr="eval:__this__.name+'@'+companies.companyName+'.com'" if="name != null"/>  
       </action-attrs>
+      
       
   </object-views>     

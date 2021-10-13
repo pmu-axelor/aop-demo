@@ -54,10 +54,8 @@
           <attribute name="title" for="mainPanel" expr="eval: statusSelection &gt;='1' ? &quot;Validated&quot; : &quot;MainPanel&quot;"/> 
              <attribute name="value" for="description" expr="eval: __this__.name" if="name != null "/>  
           <!--  <attribute name="value" for="description" expr="#{__self__.name}" if="#{name == 'project1'}"/>   -->  <!--  -->
-           <!--  <attribute name="value" for="description" expr="eval: __user__.name" if="name == 'project2'"/>  -->
+           <!--  <attribute name="value" for="description" expr="eval: __user__.name" if="name != null "/>  -->
             <!--   <attribute name="value" for="description" expr="eval: __parent__"/>  -->
-          
-          
         </action-attrs>
        
        <action-validate name="action-validate-on-move">

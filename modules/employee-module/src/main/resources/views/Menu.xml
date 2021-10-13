@@ -6,8 +6,10 @@
  
    <menuitem title="Employees-Information" name="employee-details" order="-111" />
  
-   <menuitem title="Employees" name="employee-info" parent="employee-details" action="action-employee-info" icon="fa-user" icon-background="green" tag-count="true" tag-style="success"/>
-  <action-view name="action-employee-info" title="Employees" model="com.axelor.employee.db.Employee" >
+   <menuitem title="Employees" name="employee-info" parent="employee-details" icon="fa-user" icon-background="green" />
+  
+     <menuitem title="All Employees" name="all-employees" parent="employee-info" action="action.all.employee.info"/>
+       <action-view name="action.all.employee.info" title="All Employee" model="com.axelor.employee.db.Employee" >
        <view type="grid" name="employee-grid"/>
         <view type="form" name="employee-form"/>
         <view type="cards" name="employee-card"/>
@@ -15,6 +17,21 @@
          <view-param name="showArchived" value="true"/>
          <view-param name="details-view" value="true"/> 
          <view-param name="search-filters" value="search-filters-on-employee"/>
+     </action-view>
+     
+     
+     <menuitem title="Technical Employees" name="technical-employees-details" parent="employee-info" action="action.technical.employee.details" />
+       <action-view name="action.technical.employee.details" title="Technical Employee" model="com.axelor.employee.db.Employee" >
+            <view type="grid" name="technical-employee-grid"/>
+            <view type="form" name="technical-employee-form"/> 
+            <domain>self.status = 'technical'</domain>
+       </action-view>
+     
+     <menuitem title="Non Technical Employees" name="non-technical-employees-details" parent="employee-info" action="action.non.technical.employees.details"/>
+     <action-view name="action.non.technical.employees.details" title="NonTechnical Employee" model="com.axelor.employee.db.Employee">
+         <view type="grid" name="non-technical-employee-grid"/>
+         <view type="form" name="non-technical-employee-form"/>
+         <domain>self.status = 'nonTechnical'</domain>
      </action-view>
      
      <!-- <menuitem title="All Employees" name="employees-top-root" top="true"/>

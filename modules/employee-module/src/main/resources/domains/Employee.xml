@@ -4,7 +4,7 @@
           xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
           http://axelor.com/xml/ns/domain-models/domain-models_5.0.xsd">
    
-    <module package="com.axelor.employee.db" name="employee"/> <!--package name and module name n module name is same as defined earlier -->
+    <module package="com.axelor.employee.db" name="employee"/> <!--package name and module name is same as defined earlier -->
        
       
       <enum name="STATUS">
@@ -14,7 +14,7 @@
       
     <entity name="Employee" > <!-- entity class or table name -->
     
-     <enum name="status" ref="STATUS" /> 
+     <enum name="status" title="Employee Type" ref="STATUS" /> 
      <string name="name" title="NAME" />
      <string name="designation" title="DESIGNATION" help="this is your current position in your organization"/>
      <integer name="salary" title="SALARY" default="5000" massUpdate="true" />
