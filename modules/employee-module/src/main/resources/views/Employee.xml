@@ -13,13 +13,13 @@
       </grid> 
      
     <form model="com.axelor.employee.db.Employee" title="Employee" name="employee-form"  onNew="action.onnew.record" 
-       width="large" >  <!-- onLoad="acton-onLoad.validate"      onSave="action-onSave-validate" --> 
+       width="large" onSave="action-onSave-validate" >  <!-- onLoad="acton-onLoad.validate"  --> 
         <panel-include view="employee-popup-form"/>
        
-       <panel name="mainPanel" title="Main Panel" showFrame="true" attached="true">
+       <panel name="mainPanel" showFrame="true" attached="true">
        
           <panel name="innerPanel1" colSpan="8" >
-            <field name="status" showTitle="false" widget="NavSelect" colSpan="8"/>
+            <field name="status" showTitle="false" widget="NavSelect" colSpan="8" readonlyIf="_status != null" />
             <field name="name" onChange="action-onChnage-update-email"/>
             <field name="email"/>
             <field name="designation" />
@@ -34,15 +34,15 @@
         </panel>
     </form>
     
-    <form model="com.axelor.employee.db.Employee" title="Employees" name="employee-popup-form">
-            <panel name="innerPanel1">
+    <form model="com.axelor.employee.db.Employee" title="Employees" name="employee-popup-form" css="panel-blue">
+            <panel name="employeeDetails" title="Employee Details">
                <field name="name" onChange="action-onChnage-update-email"/>
                <field name="email" />
                <field name="companies" />
             </panel>
     </form>
     
-    <cards name="employee-card" model="com.axelor.employee.db.Employee" title="Employee Card" width="300px">
+    <cards name="employee-card" model="com.axelor.employee.db.Employee" title="Employee Card" >
          <field name="name" />
          <field name="designation" />
          <field name="email"/>
@@ -52,9 +52,11 @@
              <div class="span4 card-image">
              <img ng-src="{{$image(null, 'image')}}">
               <strong>{{name}}</strong>
-            <strong>{{designation}}</strong>
-            <strong>{{email}}</strong>
-            <strong>{{isActive}}</strong>
+              </div>
+              <div class="span8">
+            <strong>{{designation}}</strong><br>
+            <abbr ng-if="email" title="Email">E:</abbr> {{email}}<br>
+            <strong>{{isActive}}</strong>  
             </div>
             ]]>
          </template>
@@ -67,12 +69,12 @@
        </filter>
     </search-filters>
     
-      <!-- <action-validate name="acton-onLoad.validate">
-      <notify message="you r from Non-Technical department" if="status == STATUS.NONTECHNICAL"/>
-    </action-validate>  --> 
+       <action-validate name="action-onSave-validate">
+         <notify message="details are added"/>
+     </action-validate>
     
      <action-record name="action.onnew.record" model="com.axelor.employee.db.Employee">
-        <field name="status" expr="eval: STATUS.TECHNICAL"/>
+        <field name="status" expr="eval:_status" />
         <field name="salary" expr="10000"/>
         <field name="isActive" expr="eval: true"/>
         <field name="companies" expr="action: action-record-default-company-details"/>

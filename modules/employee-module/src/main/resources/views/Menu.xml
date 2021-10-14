@@ -22,16 +22,18 @@
      
      <menuitem title="Technical Employees" name="technical-employees-details" parent="employee-info" action="action.technical.employee.details" />
        <action-view name="action.technical.employee.details" title="Technical Employee" model="com.axelor.employee.db.Employee" >
-            <view type="grid" name="technical-employee-grid"/>
-            <view type="form" name="technical-employee-form"/> 
-            <domain>self.status = 'technical'</domain>
+            <view type="grid" name="employee-grid"/>
+            <view type="form" name="employee-form"/> 
+             <domain>self.status = :_status</domain> 
+             <context name="_status" expr="eval: STATUS.TECHNICAL"/>
        </action-view>
      
      <menuitem title="Non Technical Employees" name="non-technical-employees-details" parent="employee-info" action="action.non.technical.employees.details"/>
      <action-view name="action.non.technical.employees.details" title="NonTechnical Employee" model="com.axelor.employee.db.Employee">
-         <view type="grid" name="non-technical-employee-grid"/>
-         <view type="form" name="non-technical-employee-form"/>
-         <domain>self.status = 'nonTechnical'</domain>
+         <view type="grid" name="employee-grid"/>
+         <view type="form" name="employee-form" />
+         <domain>self.status = :_status</domain>
+         <context name="_status" expr="eval: STATUS.NONTECHNICAL" />
      </action-view>
      
      <!-- <menuitem title="All Employees" name="employees-top-root" top="true"/>

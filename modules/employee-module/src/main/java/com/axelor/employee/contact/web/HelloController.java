@@ -4,6 +4,7 @@ import com.axelor.employee.contact.service.ServiceInter;
 import com.axelor.employee.contact.service.ServiceInterImpl;
 import com.axelor.employee.db.Company;
 import com.axelor.employee.db.Contact;
+import com.axelor.employee.db.Employee;
 import com.axelor.employee.db.repo.ContactRepository;
 import com.axelor.inject.Beans;
 import com.axelor.meta.CallMethod;
@@ -58,17 +59,17 @@ public class HelloController {
 		 
 		
 		
-		response.setAttr("state", "value", "Gujarat");
+		response.setAttr("state", "value", "kolkata");
 		response.setAttr("phone", "title", "Phone");
 		
 		
 		
 		ActionViewBuilder actionViewBuilder = ActionView.define("Contacts").model(Contact.class.getName()).add("grid", "contact-grid");
-		response.setView(actionViewBuilder.map());
+		response.setView(actionViewBuilder.map()); 
 		
    }
-	 
-	/*   @CallMethod
+	
+	 /*   @CallMethod
 	 public Response validate(String email) {
 		 
 		 Response response = new ActionResponse();
