@@ -1,9 +1,12 @@
 package com.axelor.employee.contact.service;
 
+import java.math.BigDecimal;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.axelor.employee.db.Contact;
+import com.axelor.employee.db.Employee;
 
 public class ServiceInterImpl implements ServiceInter {
 	
@@ -32,5 +35,20 @@ public String hello() {
 public String something() {
 	
 	return "Gujarat";
+}
+
+@Override
+public void check(Employee employee) {
+    
+	if(employee.getSalary() <= 20000) {
+		employee.setTransientTest("LOW" + employee.getSalary());
+	}
+	else if(employee.getSalary() > 20000 && employee.getSalary() < 40000) {
+		employee.setTransientTest("AVERAGE" + employee.getSalary());
+	}
+	else {
+		    employee.setTransientTest("HIGH" + employee.getSalary());
+	}
+	
 }
 }

@@ -26,14 +26,14 @@
            <!-- <button onClick="action-method-address-say" title="Click Me" name="clickMe"/>  -->
     </panel> 
          <panel attached="true">
-             <button name="greet" title="Click Me" onClick="com.axelor.employee.contact.web.HelloController:say" /> 
+             <button name="greet" title="Click Me" onClick="com.axelor.employee.contact.web.HelloController:say"/> 
         </panel>
   </form>   
        <action-validate name="action-contact-details">
           <notify message="contact-details is saved"/>
        </action-validate>
        
-        <action-method name="action-method-address-says">
+         <action-method name="action-method-address-says">
            <call class="com.axelor.employee.contact.web.HelloController" method="says"/>
          </action-method> 
        <action-record name="action-onNew-for-callMethod" model="com.axelor.employee.db.Contact">

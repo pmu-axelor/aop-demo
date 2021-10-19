@@ -69,19 +69,9 @@ public class HelloController {
 		
    }
 	
-	 /*   @CallMethod
-	 public Response validate(String email) {
-		 
-		 Response response = new ActionResponse();
-
-		 if(email == null) {
-			 response.addError("email", "Email Required");
-		 }else if(!email.matches("^(.+)@(.+)$")) {
-			 response.addError("email", "Invalid Email");
-		 }
-		return response;
-		 
-	 }   */
-	
+	public void checkForEmployee(ActionRequest request, ActionResponse response) {
+		Employee emp = request.getContext().asType(Employee.class);
+		Beans.get(ServiceInter.class).check(emp);
+	}
 	 
 }

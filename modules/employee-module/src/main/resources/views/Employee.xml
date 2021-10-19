@@ -23,18 +23,34 @@
             <field name="name" onChange="action-onChnage-update-email"/>
             <field name="email"/>
             <field name="designation" />
-            <field name="salary" />
+            <field name="salary" onChange="action-on-change-update-title"/>
+            <field name="addresses" colSpan="12">
+              <viewer>
+               <![CDATA[
+                   <address>
+                   <span class="muted" ng-if="record.addressType">({{record.addressType}})</span>
+                   - {{record.city}}, {{record.state}}
+                   </address>
+               ]]>
+              </viewer>
+               <editor x-show-titles="false">
+                    <field name="addressType" /> 
+                    <field name="city"/> 
+                    <field name="state"/>                                                                                                                                                                                                                                      
+                </editor>
+            </field>
      </panel>
-            </panel>  
-           <panel name="innerPanel2" title="inner Panel2" colSpan="4"  itemSpan="3" hideIf="salary &lt;= 5000" sidebar="true" stacked="true" collapseIf="true"> 
-             <field name="transientTest"/>
+            </panel> 
+     
+       <panel name="innerPanel2" title="inner Panel2" colSpan="4"  itemSpan="3" hideIf="salary &lt;= 5000" sidebar="true" stacked="true" collapseIf="true"> 
+             <field name="transientTest" title="Salary Type" />
              <field name="bonus"/>
              <field name="isActive" />
              <field name="image" widget="image"/>
-        </panel>
+      </panel>
     </form>
-    
-    <form model="com.axelor.employee.db.Employee" title="Employees" name="employee-popup-form" css="panel-blue">
+
+  <form model="com.axelor.employee.db.Employee" title="Employees" name="employee-popup-form" css="panel-blue">
             <panel name="employeeDetails" title="Employee Details">
                <field name="name" onChange="action-onChnage-update-email"/>
                <field name="email" />
@@ -47,18 +63,19 @@
          <field name="designation" />
          <field name="email"/>
          <field name="image" />
+         <!-- <field name="address" /> -->
          <template>
             <![CDATA[
              <div class="span4 card-image">
              <img ng-src="{{$image(null, 'image')}}">
               <strong>{{name}}</strong>
+              <strong>{{designation}}</strong>
               </div>
               <div class="span8">
-            <strong>{{designation}}</strong><br>
-            <abbr ng-if="email" title="Email">E:</abbr> {{email}}<br>
-            <strong>{{isActive}}</strong>  
-            </div>
-            ]]>
+                <strong>{{$address}}</strong><br>
+                <abbr ng-if="email" title="Email">E:</abbr> {{email}}<br>
+              </div>
+      ]]>
          </template>
     </cards>
     
@@ -74,7 +91,7 @@
      </action-validate>
     
      <action-record name="action.onnew.record" model="com.axelor.employee.db.Employee">
-        <field name="status" expr="eval:_status" />
+        <field name="status" expr="eval:_status"/>
         <field name="salary" expr="10000"/>
         <field name="isActive" expr="eval: true"/>
         <field name="companies" expr="action: action-record-default-company-details"/>
@@ -84,13 +101,21 @@
         <field name="companyName" expr="Default"/>
       </action-record>
       
-     <!--  <action-attrs name="action-onSave-validate">
-         <attribute name="value" for="isActive" expr="eval: true"/>
-      </action-attrs> -->
-    
-      <action-attrs name="action-onChnage-update-email">
+    <action-attrs name="action-onChnage-update-email">
            <attribute name="value" for="email" expr="eval:__this__.name+'@'+companies.companyName+'.com'" if="name != null"/>  
       </action-attrs>
-      
-      
-  </object-views>     
+         
+     <action-attrs name="action-on-change-update-title">
+        <attribute name="value" for="transientTest" expr="LOW" if="salary &lt; 20000"/>
+        <attribute name="value" for="bonus" expr="30.00" if="salary &lt; 20000"/>
+        <attribute name="value" for="transientTest" expr="AVERAGE" if="salary &gt;= 20000 &amp; salary &lt; 40000"/>
+        <attribute name="value" for="bonus" expr="15.00" if="salary &gt;= 20000 &amp; salary &lt; 40000"/>
+        <attribute name="value" for="transientTest" expr="HIGH" if="salary &gt;= 40000"/> 
+        <attribute name="value" for="bonus" expr="00.00" if="salary &gt;= 40000"/>
+      </action-attrs> 
+     
+    <!--  <action-method name="action-on-change-update-title">
+         <call class="com.axelor.employee.contact.web.HelloController" method="checkForEmployee"/>
+      </action-method> -->
+     
+ </object-views>     

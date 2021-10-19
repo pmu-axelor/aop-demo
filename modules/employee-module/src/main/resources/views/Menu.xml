@@ -13,10 +13,9 @@
        <view type="grid" name="employee-grid"/>
         <view type="form" name="employee-form"/>
         <view type="cards" name="employee-card"/>
-        <!-- <view-param name="forceEdit" value="true"/> -->
-         <view-param name="showArchived" value="true"/>
-         <view-param name="details-view" value="true"/> 
+          <view-param name="details-view" value="true" /> 
          <view-param name="search-filters" value="search-filters-on-employee"/>
+         <context name="json-enhance" expr="true"/>
      </action-view>
      
      

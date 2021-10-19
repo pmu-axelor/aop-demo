@@ -9,6 +9,7 @@
    <entity name="Address" table="address">
          <string name="city" title="CITY" />
          <string name="state" title="STATE" column="States" required="true" />
+         <string name="addressType" title="Type" selection="employee.address.type.select" />
          <string name="completeAddress" title="COMPLETE_ADDRESS" large="true"  namecolumn="true" />
           <one-to-one ref="com.axelor.employee.db.Company" name="company" mappedBy="address" /> 
    </entity>     

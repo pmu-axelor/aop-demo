@@ -12,7 +12,7 @@
       <item name="NONTECHNICAL" value="nonTechnical"/>
       </enum>
       
-    <entity name="Employee" > <!-- entity class or table name -->
+    <entity name="Employee" repository="abstract"> <!-- entity class or table name -->
     
      <enum name="status" title="Employee Type" ref="STATUS" /> 
      <string name="name" title="NAME" />
@@ -26,15 +26,13 @@
     </string> -->
     
      <string name="transientTest" title="Transient_Test" transient="true"  />
-     
-     <decimal name="bonus" title="BONUS" precision="5" scale="2" />
+     <decimal name="bonus" title="BONUS (%)" precision="5" scale="2" />
      <boolean name="isActive" title="IS_ACTIVE" />
-     
      <binary name="image" title="IMAGE" />
-     
      <many-to-one name="companies" title="Company" ref="com.axelor.employee.db.Company" />
-     
-      <string name="email" title="EMAIL" />
+     <string name="email" title="EMAIL"/>
+   
+     <one-to-many name="addresses" ref="com.axelor.employee.db.Address" />
      
      <finder-method name="findByNameAndEmail" using="name,email"/>
      <finder-method name="findAllByNameAndEmail" using="name,email" all="true"/>
