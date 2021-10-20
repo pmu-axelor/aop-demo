@@ -2,7 +2,15 @@
 <object-views xmlns="http://axelor.com/xml/ns/object-views"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://axelor.com/xml/ns/object-views
-       http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+       http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+ 
+   
+   <menuitem title="DashBoard" name="menu-dashboard" order="-112" icon="fa-dashboard" icon-background="yellow"/>
+   
+   <menuitem title="Welcomes" name="welcome-menu-dashboard" parent="menu-dashboard" action="action.welcome.menu.dashboard"/>
+    <action-view name="action.welcome.menu.dashboard" title="Welcome">
+       <view type="dashboard" name="welcome-dashboard"/>
+    </action-view>
  
    <menuitem title="Employees-Information" name="employee-details" order="-111" />
  
@@ -10,7 +18,7 @@
   
      <menuitem title="All Employees" name="all-employees" parent="employee-info" action="action.all.employee.info"/>
        <action-view name="action.all.employee.info" title="All Employee" model="com.axelor.employee.db.Employee" >
-       <view type="grid" name="employee-grid"/>
+        <view type="grid" name="employee-grid"/>
         <view type="form" name="employee-form"/>
         <view type="cards" name="employee-card"/>
           <view-param name="details-view" value="true" /> 

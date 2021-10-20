@@ -9,18 +9,22 @@
          <field name="name"/>
           <field name="percentage"/>
             <field name="description"/>
+            <field name="startDate"/>
             <hilite color="danger" if="percentage == 0.00"/>
             <template>
                <![CDATA[
                <div>
-                 <h3>Name:</h3>
+                 <h3>Project Name:</h3>
                  <h4>{{record.name}}</h4>
                  <br/>
-                  <h3>%:</h3>
+                  <h3>Progress (%):</h3>
                  <h4>{{record.percentage}}</h4>
                  <br/>
                   <h3>Description:</h3>
                  <h4>{{record.description}}</h4>
+                 <br>
+                 <h3>Project Started:</h3>
+                  <h4>{{record.startDate}}</h4>
                  </div>
                ]]>
             </template>
@@ -30,6 +34,8 @@
         <panel name="mainPanel" title="Main Panel">
           <field name="statusSelection" showTitle="false" widget="NavSelect" colSpan="12" onChange="action-group-onchange-status"/>
           <field name="name"/>
+            <field name="employeeName" readonlyIf="confirmed" form-view="employee-form" grid-view="employee-grid"/>
+            <field name="startDate" readonlyIf="confirmed"/>
           <field name="percentage"/>
             <field name="description"  widget="html" colSpan="12"/>
         </panel>
@@ -52,7 +58,7 @@
        
          <attribute name="readonly" for="name" expr="eval: true" if="statusSelection &gt;='1'"/>
           <attribute name="title" for="mainPanel" expr="eval: statusSelection &gt;='1' ? &quot;Validated&quot; : &quot;MainPanel&quot;"/> 
-             <attribute name="value" for="description" expr="eval: __this__.name" if="name != null "/>  
+             <attribute name="value" for="description" expr="eval: __this__.name + ' project' " if="name != null "/>  
           <!--  <attribute name="value" for="description" expr="#{__self__.name}" if="#{name == 'project1'}"/>   -->  <!--  -->
            <!--  <attribute name="value" for="description" expr="eval: __user__.name" if="name != null "/>  -->
             <!--   <attribute name="value" for="description" expr="eval: __parent__"/>  -->

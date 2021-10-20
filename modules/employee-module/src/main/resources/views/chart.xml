@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <object-views xmlns="http://axelor.com/xml/ns/object-views"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+       http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+     
+ <chart name="chart:chart.project.progress.per.month" title="Project progress per month" >
+     
+    <!--  <search-fields> 
+     <field type="datetime" name="fromDateTime" title="From Date"/>
+     <field type="datetime" name="toDateTime" title="To Date"/>
+     </search-fields> -->
+     
+        <dataset type="jpql">
+            <![CDATA[
+  SELECT
+      SUM(p.percentage) AS progress,
+      MONTH(p.startDate) AS month,
+       _employeeName.name AS employeeName                             
+  FROM
+      Project p
+      
+   LEFT JOIN
+        p.employeeName AS _employeeName
+  WHERE
+      YEAR(p.startDate) = YEAR(current_date)
+       
+  GROUP BY
+      _employeeName.name,                                                                    
+      MONTH(p.startDate)
+  ORDER BY
+      month
+  ]]> 
+  </dataset>
+     <category key="month" type="month"/>
+    <series key="progress" groupBy="employeeName" type="bar"/>
+     <!-- <config name="colors" value="blue,red" /> -->
+ </chart>  
+    
+  <chart name="chart.project.progress.per.month.pie" title="Project progress by percentage">
+     <dataset type="jpql">
+     <![CDATA[
+        SELECT  SUM(p.percentage) AS progress,
+                 UPPER(p.name) AS name
+             
+             FROM Project p 
+             
+                GROUP BY name
+                          
+     ]]>
+     </dataset>
+                 <category key="name" />
+                 <series key="progress" type="pie"/>
+                 
+           <!--  <config name="max" value="10"/>    -->   
+  </chart>
+       
+  </object-views>     

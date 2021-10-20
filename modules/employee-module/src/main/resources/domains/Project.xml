@@ -9,8 +9,10 @@
     <entity name="Project">
         <string name="statusSelection" title="STATUS" selection="employee.project.type.select"/>
         <integer name="priority"/>
-        <string name="name" title="NAME"/>
-        <decimal name="percentage" title="%"/>
+        <many-to-one name="employeeName" ref="com.axelor.employee.db.Employee" required="true"/>
+        <string name="name" title="PROJECT NAME"/>
+        <date name="startDate" required="true" title="PROJECT START DATE"/>
+        <decimal name="percentage" title="PROGRESS (%)" />
         <string name="description" title="DESCRIPTION" large="true"/>
       </entity>      
           
