@@ -18,9 +18,7 @@
          <string name="sequence" title="REFERENCE" sequence="employeeInfo.sequence" readonly="true" /> 
          <string name="password" title="PASSWORD"/> 
          <many-to-one name="image" title="IMAGE"  ref="com.axelor.meta.db.MetaFile" />
-         
-       
-       </entity>
+      </entity>
           
  </domain-models>
     

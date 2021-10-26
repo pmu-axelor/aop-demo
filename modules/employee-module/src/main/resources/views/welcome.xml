@@ -6,11 +6,11 @@
 
   <dashboard name="welcome-dashboard" title="Welcome">
      
-     <dashlet action="chart:chart.project.progress.per.month" title="Project progress per month"/>
+   <dashlet action="chart:chart.project.progress.per.month" title="Project progress per month"/>
      <dashlet action="chart:chart.project.progress.per.month.pie" />
-     <dashlet action="cards:employee-card" title="All Employees" />
-      <dashlet action="kanban:project-kanban" title="Projects"/>
-      <dashlet action="action.all.employee.info" colSpan="12" title="All Employees "/>
+      <dashlet action="cards:employee-card" title="All Employees" />
+        <dashlet action="kanban:project-kanban" title="Projects"/>
+         <dashlet action="action.all.employee.info" colSpan="12" title="All Employees "/>
       <!-- <dashlet action="grid:employeeInfo-grid" colSpan="12"/> -->
 </dashboard>
 

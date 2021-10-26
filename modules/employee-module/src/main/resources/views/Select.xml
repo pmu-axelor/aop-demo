@@ -22,5 +22,5 @@
           <option value="Residential">Residential</option>
           <option value="Current">Current</option>
           <option value="Office">Office</option>
-       </selection>
+      </selection>
  </object-views>      

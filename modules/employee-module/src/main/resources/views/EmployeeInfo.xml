@@ -20,8 +20,7 @@
           <field name="timeOfBirth"/>
            <field name="sequence"/>
            <field name="dateAndTime"/> 
-                
-         </panel>  
+       </panel>  
        <panel-tabs>
           <panel name="imageTab" title="Image">
              <field name="image" widget="binary-link"/>

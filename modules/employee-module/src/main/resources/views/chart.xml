@@ -33,26 +33,22 @@
   ]]> 
   </dataset>
      <category key="month" type="month"/>
-    <series key="progress" groupBy="employeeName" type="bar"/>
+     <series key="progress" groupBy="employeeName" type="bar" /> 
      <!-- <config name="colors" value="blue,red" /> -->
- </chart>  
+</chart>  
     
   <chart name="chart.project.progress.per.month.pie" title="Project progress by percentage">
      <dataset type="jpql">
      <![CDATA[
         SELECT  SUM(p.percentage) AS progress,
-                 UPPER(p.name) AS name
-             
-             FROM Project p 
-             
-                GROUP BY name
+                 UPPER(p.name) AS projectname
+            FROM Project p 
+                  GROUP BY name
                           
      ]]>
      </dataset>
-                 <category key="name" />
+                 <category key="projectname" />
                  <series key="progress" type="pie"/>
-                 
-           <!--  <config name="max" value="10"/>    -->   
+                 <config name="onClick" value="action.employee.project"/>
   </chart>
-       
   </object-views>     
